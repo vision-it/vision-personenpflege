@@ -1,0 +1,27 @@
+---
+fixtures:
+  repositories:
+    stdlib:
+      ref: "v6.0.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    docker:
+      ref: "v3.7.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-docker"
+    apt:
+      ref: "v7.1.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-apt"
+    mysql:
+      ref: "v10.1.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-mysql"
+    vision_mysql:
+      ref: "origin/production"
+      repo: "https://github.com/vision-it/vision-mysql"
+    vision_shipit:
+      ref: "origin/production"
+      repo: "https://github.com/vision-it/vision-shipit"
+    vision_docker:
+      ref: "origin/production"
+      repo: "https://github.com/vision-it/vision-docker"
+
+  symlinks:
+    vision_personenpflege: '#{source_dir}'

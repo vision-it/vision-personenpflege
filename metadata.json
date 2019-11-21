@@ -1,0 +1,19 @@
+{
+  "name": "vision_personenpflege",
+  "version": "0.0.1",
+  "author": "vision-it",
+  "source": "",
+  "summary": "",
+  "license": "Apache-2.0",
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8",
+        "9",
+        "10"
+      ]
+    }
+  ]
+}

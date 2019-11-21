@@ -1,0 +1,6 @@
+---
+vision_personenpflege::mysql_personenpflege_database: 'personenpflege'
+vision_personenpflege::mysql_personenpflege_user: 'userpers'
+vision_personenpflege::mysql_personenpflege_password: 'foobar'
+vision_personenpflege::environment: ["FOO=BAR"]
+vision_personenpflege::traefik_rule: 'Host:example.com;PathPrefixStrip:/personenpflege'
