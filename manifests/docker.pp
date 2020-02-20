@@ -18,6 +18,7 @@ class vision_personenpflege::docker (
   String $mysql_personenpflege_password = $vision_personenpflege::mysql_personenpflege_password,
   Array[String] $environment            = $vision_personenpflege::environment,
   String $traefik_rule                  = $vision_personenpflege::traefik_rule,
+  String $personenpflege_tag            = $vision_personenpflege::personenpflege_tag,
 
 ) {
 
@@ -27,12 +28,6 @@ class vision_personenpflege::docker (
     '/vision/data/personenpflege/storage/framework:/var/www/html/storage/framework',
     '/vision/data/personenpflege/storage/app:/var/www/html/storage/app',
   ]
-
-  if ($facts['personenpflege_tag'] == undef) {
-    $personenpflege_tag = 'latest'
-  } else {
-    $personenpflege_tag = $facts['personenpflege_tag']
-  }
 
   $docker_environment = concat([
       'DB_SOCKET=/var/run/mysqld/mysqld.sock',
@@ -59,9 +54,13 @@ class vision_personenpflege::docker (
         'environment' => $docker_environment,
         'deploy' => {
           'labels' => [
-            'traefik.port=8080',
-            "traefik.frontend.rule=${traefik_rule}",
             'traefik.enable=true',
+            'traefik.http.services.personenpflege.loadbalancer.server.port=8080',
+            "traefik.http.routers.personenpflege.rule=${traefik_rule}",
+            'traefik.http.routers.personenpflege.entrypoints=https',
+            'traefik.http.routers.personenpflege.tls=true',
+            'traefik.http.routers.personenpflege.middlewares=strip-personenpflege@docker',
+            'traefik.http.middlewares.strip-personenpflege.stripprefix.prefixes=/personenpflege',
           ],
         },
       }
