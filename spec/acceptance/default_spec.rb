@@ -45,7 +45,8 @@ describe 'vision_personenpflege' do
       it { is_expected.to contain 'DB_USERNAME=userpers' }
       it { is_expected.to contain 'DB_PASSWORD=foobar' }
       it { is_expected.to contain 'FOO=BAR' }
-      it { is_expected.to contain 'traefik.frontend.rule=Host:example.com;PathPrefixStrip:/personenpflege' }
+      it { is_expected.to contain 'traefik.http.routers.personenpflege.rule' }
+      it { is_expected.to contain 'Host(`example.com`) || PathPrefix(`/personenpflege`)' }
     end
   end
 end
