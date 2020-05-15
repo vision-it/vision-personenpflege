@@ -37,7 +37,7 @@ describe 'vision_personenpflege' do
     describe file('/vision/data/swarm/personenpflege.yaml') do
       it { is_expected.to be_file }
       it { is_expected.to contain 'managed by Puppet' }
-      it { is_expected.to contain 'image: registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/personenpflege:latest' }
+      it { is_expected.to contain 'image: registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/personenpflege@latest' }
       it { is_expected.to contain '/vision/data/personenpflege/storage/app:/var/www/html/storage/app' }
       it { is_expected.to contain 'personenpflege' }
       it { is_expected.to contain 'DB_SOCKET=/var/run/mysqld/mysqld.sock' }
