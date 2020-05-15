@@ -18,7 +18,7 @@ class vision_personenpflege::docker (
   String $mysql_personenpflege_password = $vision_personenpflege::mysql_personenpflege_password,
   Array[String] $environment            = $vision_personenpflege::environment,
   String $traefik_rule                  = $vision_personenpflege::traefik_rule,
-  String $personenpflege_tag            = $vision_personenpflege::personenpflege_tag,
+  String $personenpflege_digest         = $vision_personenpflege::personenpflege_tag,
 
 ) {
 
@@ -49,7 +49,7 @@ class vision_personenpflege::docker (
     'version' => '3.7',
     'services' => {
       'personenpflege' => {
-        'image'       => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/personenpflege:${personenpflege_tag}",
+        'image'       => "registry.gitlab.cc-asp.fraunhofer.de:4567/vision-it/application/personenpflege@${personenpflege_digest}",
         'volumes'     => $docker_volumes,
         'environment' => $docker_environment,
         'deploy' => {
