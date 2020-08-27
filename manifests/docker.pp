@@ -19,6 +19,7 @@ class vision_personenpflege::docker (
   Array[String] $environment            = $vision_personenpflege::environment,
   String $traefik_rule                  = $vision_personenpflege::traefik_rule,
   String $personenpflege_digest         = $vision_personenpflege::personenpflege_tag,
+  String $whitelist                     = $vision_personenpflege::whitelist,
 
 ) {
 
@@ -59,8 +60,9 @@ class vision_personenpflege::docker (
             "traefik.http.routers.personenpflege.rule=${traefik_rule}",
             'traefik.http.routers.personenpflege.entrypoints=https',
             'traefik.http.routers.personenpflege.tls=true',
-            'traefik.http.routers.personenpflege.middlewares=strip-personenpflege@docker',
+            'traefik.http.routers.personenpflege.middlewares=strip-personenpflege@docker,whitelist-personenpflege@docker',
             'traefik.http.middlewares.strip-personenpflege.stripprefix.prefixes=/personenpflege',
+            "traefik.http.middlewares.whitelist-personenpflege.ipwhitelist.sourcerange=${whitelist}",
           ],
         },
       }
