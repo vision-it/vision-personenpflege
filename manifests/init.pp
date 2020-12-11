@@ -16,6 +16,7 @@ class vision_personenpflege (
   String $mysql_personenpflege_database,
   String $mysql_personenpflege_user,
   String $mysql_personenpflege_password,
+  String $redis_personenpflege_host,
   String $whitelist,
   Array[String] $environment = [],
   String $traefik_rule       = 'PathPrefix(`/personenpflege`)',

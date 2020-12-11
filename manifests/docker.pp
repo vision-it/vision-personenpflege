@@ -16,6 +16,7 @@ class vision_personenpflege::docker (
   String $mysql_personenpflege_database = $vision_personenpflege::mysql_personenpflege_database,
   String $mysql_personenpflege_user     = $vision_personenpflege::mysql_personenpflege_user,
   String $mysql_personenpflege_password = $vision_personenpflege::mysql_personenpflege_password,
+  String $redis_personenpflege_host     = $vision_personenpflege::redis_personenpflege_host,
   Array[String] $environment            = $vision_personenpflege::environment,
   String $traefik_rule                  = $vision_personenpflege::traefik_rule,
   String $personenpflege_digest         = $vision_personenpflege::personenpflege_tag,
@@ -35,6 +36,7 @@ class vision_personenpflege::docker (
       "DB_DATABASE=${mysql_personenpflege_database}",
       "DB_USERNAME=${mysql_personenpflege_user}",
       "DB_PASSWORD=${mysql_personenpflege_password}",
+      "REDIS_HOST=${redis_personenpflege_host}",
   ], $environment)
 
   $docker_queue_environment = concat([

@@ -2,6 +2,7 @@
 vision_personenpflege::mysql_personenpflege_database: 'personenpflege'
 vision_personenpflege::mysql_personenpflege_user: 'userpers'
 vision_personenpflege::mysql_personenpflege_password: 'foobar'
+vision_personenpflege::redis_personenpflege_host: 'foobar'
 vision_personenpflege::environment: ["FOO=BAR"]
 vision_personenpflege::traefik_rule: 'Host(`example.com`) || PathPrefix(`/personenpflege`)'
 vision_personenpflege::personenpflege_tag: 'latest'
