@@ -24,10 +24,10 @@ class vision_personenpflege (
 
 ) {
 
-  contain ::vision_mysql::mariadb
+  # contain ::vision_mysql::mariadb
 
   contain vision_personenpflege::config
-  contain vision_personenpflege::database
+  # contain vision_personenpflege::database
   contain vision_personenpflege::docker
 
 }
